@@ -9,8 +9,9 @@ from transformers import DistilBertTokenizerFast
 def download_model_from_drive():
     model_path = "best_model_state.bin"
     if not os.path.exists(model_path):
-        url = f"https://drive.google.com/file/d/1BsFoHw7siSE2iMJZk5psU0ecN_qhigA_/view?usp=sharing"
+        url = "https://drive.google.com/uc?id=1BsFoHw7siSE2iMJZk5psU0ecN_qhigA_"
         gdown.download(url, model_path, quiet=False)
+
 
 # Define your model class exactly as in training
 class SentimentClassifier(nn.Module):
