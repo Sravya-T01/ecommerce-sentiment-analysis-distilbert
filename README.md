@@ -12,8 +12,8 @@ Reviews were scraped from 15 popular apps including:
 
 - Flipkart
 - Amazon
-- Myntra
-…and more.
+- Myntra 
+- Dominos Pizza and more.
 
 Instead of using pre-made datasets, I built a custom, balanced dataset to better capture authentic user feedback.
 
