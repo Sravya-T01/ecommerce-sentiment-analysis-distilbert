@@ -13,7 +13,7 @@ Reviews were scraped from 15 popular apps including:
 
 Instead of using pre-made datasets, I built a custom, balanced dataset to better capture authentic user feedback.
 
-# Key Highlights
+## Key Highlights
 
 - Custom dataset creation using google-play-scraper
 
@@ -27,7 +27,7 @@ Instead of using pre-made datasets, I built a custom, balanced dataset to better
 - DistilBERT chosen over BERT for faster training with minimal accuracy trade-off.
 - Emoji-aware preprocessing to handle tokenization issues like difference in sentiment for "awesome😭" and "awesome 😭".
 
-# Dataset Preparation
+## Dataset Preparation
 
 | Step          | Description                                                         |
 | ------------- | ------------------------------------------------------------------- |
@@ -36,7 +36,7 @@ Instead of using pre-made datasets, I built a custom, balanced dataset to better
 | **Labeling**  | 1★, 2★ → **Negative**; 4★, 5★ → **Positive**.                       |
 | **Balancing** | 6,691 reviews per class → **26,764 total reviews**.                 |
 
-# Tech Stack
+## Tech Stack
 
 - Python
 - Hugging Face Transformers – DistilBERT (distilbert-base-uncased)
@@ -46,7 +46,7 @@ Instead of using pre-made datasets, I built a custom, balanced dataset to better
 - Matplotlib, Seaborn – Visualization
 - Regex – Emoji and text preprocessing
 
-# Model Training
+## Model Training
 | Parameter                  | Value                                                 |
 | -------------------------- | ----------------------------------------------------- |
 | **Max Sequence Length**    | 200 tokens (with padding up to 300 for preprocessing) |
@@ -55,7 +55,7 @@ Instead of using pre-made datasets, I built a custom, balanced dataset to better
 | **Dropout**                | 0.1 (default)                                         |
 | **Learning Rate & Warmup** | Tuned iteratively                                     |
 
-# Performance
+## Performance
 | Metric        | Negative | Positive | Macro Avg | Weighted Avg |
 | ------------- | -------- | -------- | --------- | ------------ |
 | **Precision** | 0.88     | 0.91     | 0.90      | 0.90         |
@@ -66,13 +66,42 @@ Instead of using pre-made datasets, I built a custom, balanced dataset to better
 - Training Accuracy: **94.69%**
 - Validation Accuracy: **~90%**
 
-# Key Learnings
+## Key Learnings
 
 - The importance of data quality over quantity.
 - How noisy labels (like neutral reviews) can drop accuracy by ~20%.
 - Debugging NLP edge cases with emojis in real-world datasets.
 - Iterative hyperparameter tuning for better performance.
 
-# Future Improvements
+## Future Improvements
 - Multi-language support – Extend beyond English reviews.
 - Continuous improvement with new real-time datasets.
+
+## Project Structure
+
+- `data/` – CSVs for apps and reviews
+- `notebooks/` – Jupyter notebooks for dataset creation and model training
+- `deployment/` – Scripts for running the Streamlit app
+
+
+## Run the Repo
+
+1. Clone the repo:
+
+```bash
+git clone https://github.com/Sravya-T01/ecommerce-sentiment-analysis-distilbert.git
+cd ecommerce-sentiment-analysis-distilbert
+```
+
+2. Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+3. Run Streamlit app:
+
+```bash
+streamlit run deployment/app.py
+```
+
