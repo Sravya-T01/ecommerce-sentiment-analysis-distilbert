@@ -109,3 +109,22 @@ pip install -r requirements.txt
 streamlit run deployment/app.py
 ```
 
+## Accuracy Improvements
+I started with a baseline accuracy of ~59% after basic null value and duplicate cleaning. Then, through iterative experimentation, I significantly boosted performance
+
+| **Step** | **Change Implemented**                                                                      | **Accuracy** |
+| -------- | ------------------------------------------------------------------------------------------- | ------------ |
+| **1**    | Cleaned data for **null values and duplicates** (basic preprocessing)                       | \~59%        |
+| **2**    | Filtered out reviews **< 200 characters** to remove vague/low-context samples               | \~65–68%     |
+| **3**    | Removed **3★ neutral reviews**, reducing label noise and ambiguity                          | \~79–80%     |
+| **4**    | Switched to **DistilBERT** for faster training without sacrificing accuracy                 | \~85%        |
+| **5**    | **Hyperparameter tuning** — optimized learning rate, warm-up steps, and kept dropout at 0.1 | \~89%        |
+| **6**    | Added **emoji-aware preprocessing** to handle tokens like `"awesome😭"` vs `"awesome 😭"`   | \~90%        |
+
+## Final Model Metrics:
+
+- Training Accuracy: 94.69%
+- Validation Accuracy: ~90%
+- Macro F1-score: ~0.90 (balanced across both classes)
+
+This iterative process highlights how progressive data refinement and model tuning worked together to deliver a highly accurate, deployment-ready sentiment analysis pipeline.
